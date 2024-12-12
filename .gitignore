@@ -1,2 +1,2 @@
-/target
-/Cargo.toml
+app/target/
+app/Cargo.toml
