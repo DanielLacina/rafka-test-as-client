@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rafka-test-client-deployment
+  labels:
+    app: rafka-test-client
+spec:
+  replicas: 10 
+  selector:
+    matchLabels:
+      app: rafka-test-client
+  template:
+    metadata:
+      labels:
+        app: rafka-test-client
+    spec:
+      containers:
+      - name: rafka-test-client
+        image: bendeez/rafka-test-client:app
+        ports:
+        - containerPort: 3000  
+
+  
