@@ -5,7 +5,7 @@ metadata:
   labels:
     app: app
 spec:
-  replicas: 10 
+  replicas: 10
   selector:
     matchLabels:
       app: app
@@ -17,9 +17,9 @@ spec:
       containers:
       - name: app
         image: bendeez/rafka-test-as-client:app
+        imagePullPolicy: Always  
         ports:
-        - containerPort: 3000  
-       env:
-       - name: BROKER_URL 
-         value: "http://broker_service:8000" 
-    
+        - containerPort: 3000
+        env:  
+        - name: BROKER_URL
+          value: "http://broker-service:8000"   
