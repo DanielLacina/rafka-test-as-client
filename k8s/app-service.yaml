@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service 
 metadata:
-  name: rafka-test-client-service 
+  name: app-service 
 spec:
   selector:
-    app: rafka-test-client
+    app: app 
   ports:
     - port: 3000 
       targetPort: 3000

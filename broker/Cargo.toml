@@ -1,5 +1,5 @@
 [package]
-name = "rafka-test-as-client"
+name = "broker"
 version = "0.1.0"
 edition = "2021"
 publish = false

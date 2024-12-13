@@ -21,6 +21,7 @@ use futures::{
 };
 use rafka_consumer::Consumer;
 use rafka_producer::Producer;
+use std::env;
 use std::sync::Arc;
 use tokio::sync::broadcast;
 use tokio::sync::Mutex;
@@ -46,7 +47,9 @@ async fn main() {
 }
 
 async fn run_consumer(connections: Arc<Mutex<Vec<SplitSink<WebSocket, Message>>>>) {
-    let mut consumer = Consumer::new("127.0.0.1:8000").await.unwrap();
+    let mut consumer = Consumer::new(&env::var("BROKER_URL").unwrap())
+        .await
+        .unwrap();
     consumer.subscribe("app".to_string()).await;
     let mut rx = consumer.consume("app".to_string()).await.unwrap();
     while let Some(message) = rx.recv().await {
@@ -58,7 +61,9 @@ async fn run_consumer(connections: Arc<Mutex<Vec<SplitSink<WebSocket, Message>>>
 }
 
 async fn run_producer(mut broker_receiver: broadcast::Receiver<String>) {
-    let mut producer = Producer::new("127.0.0.1:8000").await.unwrap();
+    let mut producer = Producer::new(&env::var("BROKER_URL").unwrap())
+        .await
+        .unwrap();
     while let Ok(msg) = broker_receiver.recv().await {
         producer
             .publish("app".to_string(), msg, "default_key".to_string())

@@ -165,6 +165,19 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b048fb63fd8b5923fc5aa7b340d8e156aec7ec02f0c78fa8a6ddc2613f6f71de"
 
 [[package]]
+name = "broker"
+version = "0.1.0"
+dependencies = [
+ "chrono",
+ "rafka-broker",
+ "rafka-consumer",
+ "rafka-core",
+ "rafka-producer",
+ "rafka-storage",
+ "tokio",
+]
+
+[[package]]
 name = "bumpalo"
 version = "3.16.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -902,19 +915,6 @@ dependencies = [
  "rafka-core",
  "tracing",
  "uuid",
-]
-
-[[package]]
-name = "rafka-test-as-client"
-version = "0.1.0"
-dependencies = [
- "chrono",
- "rafka-broker",
- "rafka-consumer",
- "rafka-core",
- "rafka-producer",
- "rafka-storage",
- "tokio",
 ]
 
 [[package]]
