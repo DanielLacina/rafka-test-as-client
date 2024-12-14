@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: broker-deployment
+  name: rafka-deployment
   labels:
-    app: broker 
+    app: rafka 
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: broker 
+      app: rafka 
   template:
     metadata:
       labels:
-        app: broker 
+        app: rafka 
     spec:
       containers:
-      - name: broker 
+      - name: rafka 
         image: bendeez/rafka-test-as-client:broker
         ports:
         - containerPort: 8000  

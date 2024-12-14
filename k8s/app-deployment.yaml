@@ -22,4 +22,4 @@ spec:
         - containerPort: 3000
         env:  
         - name: BROKER_URL
-          value: "http://broker-service:8000"   
+          value: "http://rafka-service:8000"
