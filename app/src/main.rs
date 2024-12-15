@@ -47,6 +47,10 @@ async fn main() {
 }
 
 async fn run_consumer(connections: Arc<Mutex<Vec<SplitSink<WebSocket, Message>>>>) {
+    println!(
+        "consumer connecting to {}",
+        &env::var("BROKER_URL").unwrap()
+    );
     let mut consumer = Consumer::new(&env::var("BROKER_URL").unwrap())
         .await
         .unwrap();
@@ -61,6 +65,10 @@ async fn run_consumer(connections: Arc<Mutex<Vec<SplitSink<WebSocket, Message>>>
 }
 
 async fn run_producer(mut broker_receiver: broadcast::Receiver<String>) {
+    println!(
+        "producer connecting to {}",
+        &env::var("BROKER_URL").unwrap()
+    );
     let mut producer = Producer::new(&env::var("BROKER_URL").unwrap())
         .await
         .unwrap();

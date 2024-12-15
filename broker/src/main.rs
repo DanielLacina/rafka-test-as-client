@@ -11,5 +11,5 @@ async fn main() {
         max_bytes: 1024 * 1024 * 1024,
     };
     let broker = Broker::new(partition_id, total_partitions, Some(retention_policy));
-    broker.serve("127.0.0.1:8000").await;
+    broker.serve("0.0.0.0:8000").await;
 }

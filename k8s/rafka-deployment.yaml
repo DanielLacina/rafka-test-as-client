@@ -17,6 +17,7 @@ spec:
       containers:
       - name: rafka 
         image: bendeez/rafka-test-as-client:broker
+        imagePullPolicy: Always
         ports:
         - containerPort: 8000  
 
